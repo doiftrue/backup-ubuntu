@@ -1,11 +1,8 @@
 #!/bin/bash
 
-# create tar file
-# sudo tar cf /media/kama/2TB-BACKUP/system-backup-$(date +%Y-%m).zip /media/kama/2TB-BACKUP/system-backup/
-# OR
-# sudo tar cf system-backup-$(date +%Y-%m-%d).tar system-backup/
+THE_FILE_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-BACKUP_MOUNT_DIR=/media/kama/2TB-BACKUP
+source "$THE_FILE_DIR"/_vars.sh
 
 is_mounted() {
     mountpoint -q "$1"
@@ -22,8 +19,6 @@ fi
 
 cd / || exit
 
-SOURCE=/
-DESTINATION="$BACKUP_MOUNT_DIR/system-backup"
 EXCLUDE_DIRS="/dev/*
 /proc/*
 /sys/*
@@ -36,11 +31,12 @@ EXCLUDE_DIRS="/dev/*
 */Trash/*
 */tmp/*
 */temp/*
+*/.cache/*
 Downloads/*
 */node_modules/*
 */RECOVERED_FILES/
-/home/kama/.cache/
+*/TelegramDesktop/tdata/user_data/cache/*
 */TelegramDesktop/tdata/user_data/media_cache/*"
 
-rsync -aAXv --delete --delete-excluded --exclude-from=<(printf "%s" "$EXCLUDE_DIRS";) "$SOURCE" "$DESTINATION"
+rsync -aAXv --delete --delete-excluded --exclude-from=<(printf "%s" "$EXCLUDE_DIRS";) "$SOURCE_DIR" "$DESTINATION_DIR"
 
