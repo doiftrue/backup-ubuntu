@@ -16,6 +16,7 @@ EXCLUDE_DIRS="/dev/*
 /media/*
 /lost+found
 /swapfile
+/var/log/*
 */Trash/*
 */tmp/*
 */temp/*
