@@ -17,6 +17,7 @@ EXCLUDE_DIRS="/dev/*
 /lost+found
 /swapfile
 /var/log/*
+/var/lib/docker/*
 */Trash/*
 */tmp/*
 */temp/*
