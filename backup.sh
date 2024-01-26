@@ -18,11 +18,13 @@ EXCLUDE_DIRS="/dev/*
 /swapfile
 /var/log/*
 /var/lib/docker/*
+/home/*/Downloads/*
 */Trash/*
 */tmp/*
 */temp/*
 */.cache/*
-Downloads/*
+*/Cache/*
+*/CacheStorage/*
 */node_modules/*
 */RECOVERED_FILES/
 */TelegramDesktop/tdata/user_data/cache/*
